@@ -1,1 +1,50 @@
-<p>sign-up works!</p>
+<form #myForm="ngForm" (ngSubmit)="onSubmit()">
+
+  <fieldset>
+    <label for="email-order">Email </label>
+    <input id="email-order" name="email" type="email" [(ngModel)]="models.email" #email="ngModel" required maxlength="15">
+  </fieldset>
+
+  <div *ngIf="email.errors">
+    <span *ngIf="myForm.submitted && email.errors?.['required']">L' email est requis</span>
+    <span *ngIf="myForm.submitted && email.errors?.['email']">L' email est invalide</span>
+  </div>
+  <fieldset>
+    <label for="firstname-order">Firstname</label>
+    <input id="firstname-order" name="firstname-order" type="text" [(ngModel)]="models.firstname" #firstname="ngModel" required minlength="3" maxlength="15">
+  </fieldset>
+
+  <div *ngIf="firstname.errors">
+    <span *ngIf="myForm.submitted && firstname.errors?.['required']">Le prénom est requis</span>
+    <span *ngIf="myForm.submitted && firstname.errors?.['maxlength']">Le pénom ne doit pas dépasser 15 caractères</span>
+    <span *ngIf="myForm.submitted && firstname.errors?.['minlength']">Le prénom doit comporter au moins 3 caractères.</span>
+  </div>
+
+  <fieldset>
+    <label for="lastname-order">Lastname</label>
+    <input id="lastname-order" name="lastname" type="text" [(ngModel)]="models.lastname" #lastname="ngModel" required minlength="3" maxlength="15">
+  </fieldset>
+
+  <div *ngIf="lastname.errors">
+    <span *ngIf="myForm.submitted && lastname.errors?.['required']">Le nom est requis</span>
+    <span *ngIf="myForm.submitted && lastname.errors?.['maxlength']">Le nom ne doit pas dépasser 15 caractères</span>
+    <span *ngIf="myForm.submitted && lastname.errors?.['minlength']">Le nom doit comporter au moins 3 caractères.</span>
+  </div>
+
+  <fieldset>
+    <label for="password-order">Password</label>
+    <input id="password-order" name="password" type="text" [(ngModel)]="models.password" #password="ngModel" required minlength="3" maxlength="15">
+  </fieldset>
+
+  <div *ngIf="password.errors">
+    <span *ngIf="myForm.submitted && password.errors?.['required']">Le mot de passe est requis</span>
+  </div>
+
+  <button type="submit">Submit</button>
+</form>
+
+<!--  <div>-->
+<!--    Form submitted ? {{myForm.submitted}}-->
+<!--    Form valid ? {{myForm.valid}}-->
+<!--    Form invalid ? {{myForm.valid}}-->
+<!--  </div>-->

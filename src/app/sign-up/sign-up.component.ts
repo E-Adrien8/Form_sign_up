@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {User} from "../model/user";
 
 @Component({
   selector: 'app-sign-up',
@@ -6,10 +7,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sign-up.component.css']
 })
 export class SignUpComponent implements OnInit {
+  constructor() {
+  }
 
-  constructor() { }
+  models: User = new User("", "", "", "")
+
+
+  onSubmit(): void {
+    console.log(this.models);
+  }
 
   ngOnInit(): void {
   }
-
 }
+
+
